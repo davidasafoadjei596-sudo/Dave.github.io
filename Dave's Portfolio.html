@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>David Asafo Adjei | Multidisciplinary Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #050b12;
+      color: #eef5ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* animated dark glass background */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at 20% 30%, #0a0f1a, #030609);
+    }
+
+    .bg-glow::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(80, 80, 100, 0.25), transparent);
+      top: 10%;
+      left: -5%;
+      border-radius: 50%;
+      filter: blur(70px);
+      animation: floatGlow 18s infinite alternate;
+    }
+
+    .bg-glow::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(50, 50, 70, 0.2), transparent);
+      bottom: 0;
+      right: -10%;
+      border-radius: 50%;
+      filter: blur(90px);
+      animation: floatGlow2 20s infinite alternate;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+      100% { transform: translate(40px, 30px) scale(1.2); opacity: 0.7; }
+    }
+    @keyframes floatGlow2 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+      100% { transform: translate(-30px, -40px) scale(1.3); opacity: 0.6; }
+    }
+
+    /* glass container */
+    .glass-card, .hero-glass, .stats-grid, .skill-card, .portfolio-item, .contact-card {
+      background: rgba(15, 20, 30, 0.5);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* navbar glass */
+    nav {
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+      background: rgba(5, 10, 18, 0.6);
+      backdrop-filter: blur(16px);
+      border-radius: 3rem;
+      width: 90%;
+      max-width: 1100px;
+      margin: 1rem auto 0;
+      padding: 0.8rem 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, #fff, #aaa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }
+
+    /* hero */
+    .hero-section {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      margin: 2rem 0 3rem;
+    }
+
+    .hero-glass {
+      padding: 3rem 2.5rem;
+      width: 100%;
+      text-align: center;
+      background: rgba(10, 15, 25, 0.55);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-glass h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #ffffff, #b0c4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .titles {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin: 1.2rem 0;
+    }
+
+    .title-badge {
+      background: rgba(0,0,0,0.5);
+      padding: 0.4rem 1.3rem;
+      border-radius: 3rem;
+      border-left: 2px solid #aaa;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .scroll-down {
+      margin-top: 2rem;
+      display: inline-block;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-down a {
+      color: #ccc;
+      font-size: 1.8rem;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: inline-block;
+      background: linear-gradient(120deg, #fff, #a0a0c0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-left: 4px solid #fff;
+      padding-left: 1rem;
+    }
+
+    /* about */
+    .about-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-highlight {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+    }
+
+    /* skills columns */
+    .skills-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+    .skill-card {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .skill-card i {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #b8d0ff;
+    }
+    .skill-card ul {
+      text-align: left;
+      margin-top: 1rem;
+      list-style: none;
+      padding-left: 0;
+    }
+    .skill-card li {
+      margin: 0.6rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* stats area */
+    .stats-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 100px;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #bbb;
+    }
+
+    /* portfolio grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .portfolio-item {
+      padding: 1.8rem;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-6px);
+      background: rgba(30, 40, 55, 0.6);
+    }
+    .portfolio-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* why black */
+    .philosophy-card {
+      padding: 2rem;
+      margin: 2rem 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      border-left: 6px solid #fff;
+    }
+
+    /* contact */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .contact-card {
+      flex: 1;
+      padding: 1.8rem;
+      text-align: center;
+    }
+    .contact-card i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+    .btn-ghost {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+      color: white;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.2s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 780px) {
+      .hero-glass h1 { font-size: 2.3rem; }
+      .section-title { font-size: 1.7rem; }
+      nav { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<nav>
+  <div class="logo">DAVID ASAFO ADJEI</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="container">
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero-glass">
+      <h1>David Asafo Adjei</h1>
+      <div class="titles">
+        <span class="title-badge"><i class="fas fa-code"></i> Software Engineer</span>
+        <span class="title-badge"><i class="fas fa-chalkboard-user"></i> Teacher Trainee</span>
+        <span class="title-badge"><i class="fas fa-bolt"></i> Electrician</span>
+      </div>
+      <p style="max-width: 600px; margin: 1rem auto; color: #ccddee;">Building elegant digital solutions, inspiring young minds, and powering the future — all in one.</p>
+      <div class="scroll-down">
+        <a href="#about"><i class="fas fa-chevron-down"></i><br><span style="font-size: 0.7rem;">Scroll Down</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid glass-card" style="padding: 2rem;">
+      <div class="about-text">
+        <p style="margin-bottom: 1rem;">I'm <strong>David Asafo Adjei</strong>, a multidisciplinary professional driven by curiosity and craft. My journey spans three worlds — as a <strong>Software Engineer</strong>, I architect resilient web and mobile solutions. As a <strong>Teacher Trainee</strong>, I shape curious classrooms and ignite passion for STEM. And as an <strong>Electrician</strong>, I bring precision and safety to every circuit and installation.</p>
+        <p>Each field sharpens my problem-solving: code teaches logic, teaching builds empathy, and electrical work instills discipline. My favourite colour is <strong style="color:white">black</strong> — it embodies elegance, power, and infinite potential, much like the approach I take to every project.</p>
+      </div>
+      <div class="about-highlight">
+        <p><i class="fas fa-id-card"></i> <strong>Name:</strong> David Asafo Adjei</p>
+        <p><i class="fas fa-briefcase"></i> <strong>Roles:</strong> SWE / Teacher / Electrician</p>
+        <p><i class="fas fa-palette"></i> <strong>Favourite Color:</strong> Black</p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Ghana</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Skills Section (three columns) -->
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+    <div class="skills-row">
+      <!-- Software Engineering -->
+      <div class="skill-card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Software Engineering</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Web Development (HTML, CSS, JS)</li>
+          <li><i class="fas fa-check-circle"></i> React & Vue.js</li>
+          <li><i class="fas fa-check-circle"></i> Backend (Node.js, Python)</li>
+          <li><i class="fas fa-check-circle"></i> Database Design (SQL, MongoDB)</li>
+          <li><i class="fas fa-check-circle"></i> Git & Version Control</li>
+          <li><i class="fas fa-check-circle"></i> REST APIs & Integration</li>
+        </ul>
+      </div>
+      <!-- Teaching -->
+      <div class="skill-card">
+        <i class="fas fa-chalkboard"></i>
+        <h3>Teaching & Education</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Curriculum Development</li>
+          <li><i class="fas fa-check-circle"></i> Classroom Management</li>
+          <li><i class="fas fa-check-circle"></i> Student Mentorship</li>
+          <li><i class="fas fa-check-circle"></i> EdTech Integration</li>
+          <li><i class="fas fa-check-circle"></i> Lesson Planning & Assessment</li>
+          <li><i class="fas fa-check-circle"></i> Inclusive Pedagogy</li>
+        </ul>
+      </div>
+      <!-- Electrical Work -->
+      <div class="skill-card">
+        <i class="fas fa-plug"></i>
+        <h3>Electrical Work</h3>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> Wiring & Installation</li>
+          <li><i class="fas fa-check-circle"></i> Electrical Troubleshooting</li>
+          <li><i class="fas fa-check-circle"></i> Safety Compliance & Codes</li>
+          <li><i class="fas fa-check-circle"></i> Circuit Design & Analysis</li>
+          <li><i class="fas fa-check-circle"></i> Equipment Maintenance</li>
+          <li><i class="fas fa-check-circle"></i> Power Systems Basics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats area -->
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Professions</div>
+      <small style="color:#aaa">(but infinite impact)</small>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Mission</div>
+      <small style="color:#aaa">— unlimited purpose</small>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">0%</div>
+      <div class="stat-label">Dedication</div>
+      <small style="color:#aaa">(measurable passion)</small>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Possibilities</div>
+      <small style="color:#aaa">endless innovation</small>
+    </div>
+  </div>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2 class="section-title">My Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <div class="portfolio-icon"><i class="fas fa-globe"></i></div>
+        <h3>Web Applications</h3>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Modern, responsive web apps with seamless UX and glassmorphism dashboards, real-time tools.</p>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Educational Resources</h3>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Interactive learning platforms, lesson plans, and digital content for teachers and students.</p>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Electrical Projects</h3>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Safe residential wiring, automation circuits, and energy-efficient installations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why I Love Black (philosophical) -->
+  <div class="philosophy-card">
+    <h3 style="font-size: 1.8rem; margin-bottom: 0.8rem;"><i class="fas fa-moon"></i> Why I Love Black</h3>
+    <p style="font-size: 1.05rem; line-height: 1.6;">Black is more than a shade — it's a philosophy. It embodies elegance, strength, and the quiet confidence of infinite depth. In design, black gives every other colour a canvas to shine. In life, black reminds me that from stillness comes clarity, and from simplicity emerges pure power. It's the colour of the universe's vastness, absorbing all light yet radiating boundless potential. Black is the foundation of my creativity: resilient, timeless, and always impactful.</p>
+  </div>
+
+  <!-- Get In Touch section with updated contact details -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-flex">
+      <div class="contact-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Phone / WhatsApp</h3>
+        <p style="font-size: 1.1rem; font-weight: 500;">+233 50 494 3982</p>
+        <small style="color:#aaa">Call or message — available for collaborations</small>
+      </div>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <p style="font-size: 0.9rem; word-break: break-word;">davidasafoadjei596@gmail.com</p>
+        <a href="mailto:davidasafoadjei596@gmail.com" class="btn-ghost" style="margin-top: 0.8rem;"><i class="fas fa-paper-plane"></i> Send Email</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-github"></i>
+        <h3>GitHub</h3>
+        <a href="#" class="btn-ghost" target="_blank"><i class="fab fa-github"></i> david-asafo-dev</a>
+        <p style="margin-top: 0.8rem; font-size: 0.8rem;">Explore open-source & projects</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <p style="background: rgba(255,255,240,0.05); display: inline-block; padding: 0.5rem 1.5rem; border-radius: 2rem;">
+        <i class="fas fa-map-marker-alt"></i> Location: Accra, Ghana
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 David Asafo Adjei — Software | Teaching | Electrical. Infinite possibilities, black elegance.</p>
+  <p style="margin-top: 0.4rem;"><i class="fas fa-heart" style="color: #aaa;"></i> Glassmorphism · Ghana · Contact: +233 50 494 3982</p>
+</footer>
+
+<!-- smooth scroll + interactive glass effects -->
+<script>
+  // smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const targetElement = document.querySelector(targetId);
+      if(targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // subtle 3D tilt effect on cards
+  const cards = document.querySelectorAll('.skill-card, .portfolio-item, .contact-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+
+  // interactive pulse on stats numbers
+  const statNumbers = document.querySelectorAll('.stat-number');
+  statNumbers.forEach(stat => {
+    stat.addEventListener('click', () => {
+      stat.style.transform = 'scale(1.1)';
+      setTimeout(() => stat.style.transform = '', 200);
+    });
+  });
+  console.log("David Asafo Adjei portfolio — glassmorphism with updated contact: 0504943982 / davidasafoadjei596@gmail.com");
+</script>
+</body>
+</html>
